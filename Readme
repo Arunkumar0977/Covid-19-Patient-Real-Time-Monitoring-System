@@ -1,0 +1,79 @@
+🩺 COVID-19 Real-Time Patient Monitoring System
+An IoT-based real-time health monitoring system using ESP8266, DHT11, DS18B20, MAX30100, and an I2C LCD. It reads and displays live vitals including room temperature, humidity, body temperature, heart rate, and SpO₂ (oxygen saturation) on both a physical LCD and a responsive web interface.
+📌 Features
+•	🌡️ Measures room temperature and humidity using DHT11.
+•	🌡️ Measures body temperature using DS18B20 sensor.
+•	❤️ Monitors heart rate and SpO₂ levels using MAX30100.
+•	🖥 Displays all data in real-time on a web dashboard.
+•	📟 Displays readings on a 16x2 I2C LCD.
+•	🌐 Acts as a web server accessible over local Wi-Fi.
+________________________________________
+🔧 Components Used
+Component	Description
+ESP8266 (NodeMCU)	Wi-Fi-enabled microcontroller
+DHT11	Temperature and humidity sensor
+DS18B20	Digital temperature sensor
+MAX30100	Heart rate and SpO₂ sensor
+LCD 16x2 (I2C)	I2C-based LCD display
+Breadboard & Jumper Wires	For prototyping
+________________________________________
+📲 Web Dashboard
+The ESP8266 runs a web server displaying live health vitals with modern styling and auto-refresh. The data includes:
+•	Room Temperature (°C)
+•	Humidity (%)
+•	Body Temperature (°C)
+•	Heart Rate (BPM)
+•	SpO₂ (%)
+•	COVID status based on body temperature
+
+🛠️ Circuit Diagram
+Make sure you connect the components as follows:
+
+DHT11: Data → D5
+
+DS18B20: Data → D3 (with 4.7k pull-up resistor)
+
+MAX30100: SDA/SCL → I2C pins (D1/D2)
+
+LCD (I2C): SDA → D2, SCL → D1
+
+ESP8266: Power via USB or external 3.3V
+
+📦 Installation & Setup
+Install Arduino IDE
+
+Install Libraries:
+
+ESP8266WiFi
+
+ESP8266WebServer
+
+DHT sensor library
+
+DallasTemperature
+
+OneWire
+
+MAX30100_PulseOximeter
+
+LiquidCrystal_I2C
+
+Connect ESP8266 to PC
+
+Upload the Code
+
+Connect to the Wi-Fi and open the IP in a browser.
+
+🔐 Wi-Fi Credentials
+    const char* ssid = "YOUR_SSID";
+    const char* password = "YOUR_PASSWORD";
+
+🧪 Output Example
+    Room Temp: 29.00 °C
+    Humidity: 54 %
+    Body Temp: 37.50 °C
+    Heart Rate: 78 bpm
+    SpO2: 98 %
+    Status: COVID Negative
+
+
