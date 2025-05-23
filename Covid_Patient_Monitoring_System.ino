@@ -211,14 +211,18 @@ void loop() {
   pox.update();
   server.handleClient();
 
-  // Simulated data
-  temperature = random(280, 361) / 10.0;    // 28.0 - 36.0 °C
-  humidity = random(350, 601) / 10.0;       // 35% - 60%
-  heartRate = 75 + random(-5, 6);           // ~70–80 bpm
-  spo2 = 97 + random(-1, 2);                // ~96–98%
+   if (millis() - tsLastReport > 5000) {
+  tsLastReport = millis();
+
+  temperature = dht.readTemperature();
+  humidity = dht.readHumidity();
 
   ds18b20.requestTemperatures();
-  tempDS18B20 = ds18b20.getTempCByIndex(0);
+  bodytemperature = ds18b20.getTempCByIndex(0);
+
+  BPM = pox.getHeartRate();
+  SpO2 = pox.getSpO2();
+
 
   if (millis() - tsLastReport > 20000) {
     tsLastReport = millis();
